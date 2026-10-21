@@ -1,0 +1,47 @@
+{
+  "name": "qa-metrics-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that turns JUnit/TestNG/Playwright test reports into QA metrics an AI assistant can query: pass rates, flaky tests, regressions, failure clusters.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "generate-data": "tsx scripts/generate-sample-data.ts",
+    "smoke": "tsx scripts/smoke-test.ts",
+    "prepare": "tsc"
+  },
+  "keywords": [
+    "mcp",
+    "qa",
+    "test-automation",
+    "junit",
+    "flaky-tests",
+    "claude"
+  ],
+  "author": "Jared Hood",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "fast-xml-parser": "^5.11.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "type": "module",
+  "bin": {
+    "qa-metrics-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist",
+    "sample-data",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

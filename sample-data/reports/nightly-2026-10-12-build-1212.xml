@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic data for the qa-metrics-mcp demo. Fictional app "ShopLite". -->
+<testsuites name="shoplite-nightly" tests="31" failures="3" errors="0" skipped="1" time="86.743" timestamp="2026-10-12T07:07:12.000Z">
+  <properties>
+    <property name="build" value="1212"/>
+    <property name="commit" value="0604077"/>
+    <property name="branch" value="main"/>
+    <property name="environment" value="staging"/>
+    <property name="pipeline" value="gitlab-ci/nightly-regression"/>
+  </properties>
+  <testsuite name="ui.auth" tests="6" failures="0" errors="0" skipped="1" time="13.998" timestamp="2026-10-12T07:07:12.000Z">
+    <testcase classname="ui.auth" name="login_valid" time="2.116"/>
+    <testcase classname="ui.auth" name="login_invalid_password" time="1.773"/>
+    <testcase classname="ui.auth" name="logout" time="1.174"/>
+    <testcase classname="ui.auth" name="password_reset_email" time="3.683"/>
+    <testcase classname="ui.auth" name="session_timeout" time="5.252"/>
+    <testcase classname="ui.auth" name="mfa_prompt" time="0.000">
+      <skipped message="Feature flag 'mfa_v2' disabled in staging"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ui.cart" tests="6" failures="1" errors="0" skipped="0" time="15.954" timestamp="2026-10-12T07:07:12.000Z">
+    <testcase classname="ui.cart" name="add_item" time="2.604"/>
+    <testcase classname="ui.cart" name="remove_item" time="2.191"/>
+    <testcase classname="ui.cart" name="update_quantity" time="3.048"/>
+    <testcase classname="ui.cart" name="apply_coupon" time="3.065">
+      <failure message="expected cart total 89.99 to equal 80.99 after coupon SAVE10" type="AssertionError">AssertionError: expected cart total 89.99 to equal 80.99 after coupon SAVE10
+    at CartPage.assertTotal (tests/ui/pages/cart.ts:72:7)
+    at tests/ui/cart.spec.ts:114:5</failure>
+    </testcase>
+    <testcase classname="ui.cart" name="cart_persists_after_login" time="3.877"/>
+    <testcase classname="ui.cart" name="empty_cart_message" time="1.169"/>
+  </testsuite>
+  <testsuite name="ui.checkout" tests="6" failures="1" errors="0" skipped="0" time="42.843" timestamp="2026-10-12T07:07:12.000Z">
+    <testcase classname="ui.checkout" name="guest_checkout" time="18.472"/>
+    <testcase classname="ui.checkout" name="saved_card_checkout" time="7.423"/>
+    <testcase classname="ui.checkout" name="tax_calculation" time="3.742">
+      <failure message="expected order total 107.39 to equal 97.67 for CO tax rate 8.81%" type="AssertionError">AssertionError: expected order total 107.39 to equal 97.67 for CO tax rate 8.81%
+    at CheckoutPage.assertOrderTotal (tests/ui/pages/checkout.ts:140:7)
+    at tests/ui/checkout.spec.ts:203:5</failure>
+    </testcase>
+    <testcase classname="ui.checkout" name="shipping_options" time="4.095"/>
+    <testcase classname="ui.checkout" name="order_confirmation_email" time="5.470"/>
+    <testcase classname="ui.checkout" name="address_validation" time="3.641"/>
+  </testsuite>
+  <testsuite name="ui.search" tests="5" failures="0" errors="0" skipped="0" time="10.262" timestamp="2026-10-12T07:07:12.000Z">
+    <testcase classname="ui.search" name="keyword_search" time="1.664"/>
+    <testcase classname="ui.search" name="filter_by_price" time="2.809"/>
+    <testcase classname="ui.search" name="sort_by_rating" time="2.427"/>
+    <testcase classname="ui.search" name="no_results_page" time="1.499"/>
+    <testcase classname="ui.search" name="autocomplete" time="1.863"/>
+  </testsuite>
+  <testsuite name="api.orders" tests="5" failures="1" errors="0" skipped="0" time="2.620" timestamp="2026-10-12T07:07:12.000Z">
+    <testcase classname="api.orders" name="create_order" time="0.369"/>
+    <testcase classname="api.orders" name="get_order" time="0.193"/>
+    <testcase classname="api.orders" name="cancel_order" time="0.388"/>
+    <testcase classname="api.orders" name="list_orders_pagination" time="0.599"/>
+    <testcase classname="api.orders" name="order_webhook" time="1.071">
+      <failure message="expected status 200 but received 504 Gateway Timeout from /hooks/order-created" type="AssertionError">AssertionError: expected status 200 but received 504 Gateway Timeout from /hooks/order-created
+    at assertWebhookDelivered (tests/api/orders.webhook.spec.ts:39:10)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="api.inventory" tests="3" failures="0" errors="0" skipped="0" time="1.066" timestamp="2026-10-12T07:07:12.000Z">
+    <testcase classname="api.inventory" name="stock_decrement" time="0.308"/>
+    <testcase classname="api.inventory" name="low_stock_alert" time="0.422"/>
+    <testcase classname="api.inventory" name="restock" time="0.336"/>
+  </testsuite>
+</testsuites>

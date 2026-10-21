@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic data for the qa-metrics-mcp demo. Fictional app "ShopLite". -->
+<testsuites name="shoplite-nightly" tests="31" failures="2" errors="6" skipped="1" time="80.274" timestamp="2026-10-07T07:00:30.000Z">
+  <properties>
+    <property name="build" value="1207"/>
+    <property name="commit" value="902059d"/>
+    <property name="branch" value="main"/>
+    <property name="environment" value="staging"/>
+    <property name="pipeline" value="gitlab-ci/nightly-regression"/>
+  </properties>
+  <testsuite name="ui.auth" tests="6" failures="0" errors="0" skipped="1" time="14.166" timestamp="2026-10-07T07:00:30.000Z">
+    <testcase classname="ui.auth" name="login_valid" time="2.240"/>
+    <testcase classname="ui.auth" name="login_invalid_password" time="1.942"/>
+    <testcase classname="ui.auth" name="logout" time="1.125"/>
+    <testcase classname="ui.auth" name="password_reset_email" time="3.077"/>
+    <testcase classname="ui.auth" name="session_timeout" time="5.782"/>
+    <testcase classname="ui.auth" name="mfa_prompt" time="0.000">
+      <skipped message="Feature flag 'mfa_v2' disabled in staging"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ui.cart" tests="6" failures="0" errors="0" skipped="0" time="16.676" timestamp="2026-10-07T07:00:30.000Z">
+    <testcase classname="ui.cart" name="add_item" time="2.619"/>
+    <testcase classname="ui.cart" name="remove_item" time="2.317"/>
+    <testcase classname="ui.cart" name="update_quantity" time="3.055"/>
+    <testcase classname="ui.cart" name="apply_coupon" time="3.115"/>
+    <testcase classname="ui.cart" name="cart_persists_after_login" time="4.503"/>
+    <testcase classname="ui.cart" name="empty_cart_message" time="1.067"/>
+  </testsuite>
+  <testsuite name="ui.checkout" tests="6" failures="1" errors="0" skipped="0" time="34.675" timestamp="2026-10-07T07:00:30.000Z">
+    <testcase classname="ui.checkout" name="guest_checkout" time="9.965"/>
+    <testcase classname="ui.checkout" name="saved_card_checkout" time="6.516"/>
+    <testcase classname="ui.checkout" name="tax_calculation" time="4.170"/>
+    <testcase classname="ui.checkout" name="shipping_options" time="4.883">
+      <failure message="locator.click: Timeout 15000ms exceeded waiting for '[data-test=shipping-express]'" type="TimeoutError">TimeoutError: locator.click: Timeout exceeded waiting for '[data-test=shipping-express]'
+    at ShippingStep.selectExpress (tests/ui/pages/shipping.ts:22:18)
+    at tests/ui/checkout.spec.ts:156:5</failure>
+    </testcase>
+    <testcase classname="ui.checkout" name="order_confirmation_email" time="5.628"/>
+    <testcase classname="ui.checkout" name="address_validation" time="3.513"/>
+  </testsuite>
+  <testsuite name="ui.search" tests="5" failures="1" errors="0" skipped="0" time="10.846" timestamp="2026-10-07T07:00:30.000Z">
+    <testcase classname="ui.search" name="keyword_search" time="1.742"/>
+    <testcase classname="ui.search" name="filter_by_price" time="3.071"/>
+    <testcase classname="ui.search" name="sort_by_rating" time="2.354"/>
+    <testcase classname="ui.search" name="no_results_page" time="1.511"/>
+    <testcase classname="ui.search" name="autocomplete" time="2.168">
+      <failure message="elementHandle.click: Element is not attached to the DOM" type="Error">Error: elementHandle.click: Element is not attached to the DOM
+    at SearchBar.pickSuggestion (tests/ui/pages/search.ts:47:12)
+    at tests/ui/search.spec.ts:61:5</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="api.orders" tests="5" failures="0" errors="3" skipped="0" time="2.783" timestamp="2026-10-07T07:00:30.000Z">
+    <testcase classname="api.orders" name="create_order" time="0.446">
+      <error message="connect ECONNREFUSED inventory-svc:8080" type="Error">Error: connect ECONNREFUSED inventory-svc:8080
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+    at ApiClient.request (tests/api/client.ts:48:11)</error>
+    </testcase>
+    <testcase classname="api.orders" name="get_order" time="0.167"/>
+    <testcase classname="api.orders" name="cancel_order" time="0.352">
+      <error message="connect ECONNREFUSED inventory-svc:8080" type="Error">Error: connect ECONNREFUSED inventory-svc:8080
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+    at ApiClient.request (tests/api/client.ts:48:11)</error>
+    </testcase>
+    <testcase classname="api.orders" name="list_orders_pagination" time="0.573"/>
+    <testcase classname="api.orders" name="order_webhook" time="1.245">
+      <error message="connect ECONNREFUSED inventory-svc:8080" type="Error">Error: connect ECONNREFUSED inventory-svc:8080
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+    at ApiClient.request (tests/api/client.ts:48:11)</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="api.inventory" tests="3" failures="0" errors="3" skipped="0" time="1.128" timestamp="2026-10-07T07:00:30.000Z">
+    <testcase classname="api.inventory" name="stock_decrement" time="0.333">
+      <error message="connect ECONNREFUSED inventory-svc:8080" type="Error">Error: connect ECONNREFUSED inventory-svc:8080
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+    at ApiClient.request (tests/api/client.ts:48:11)</error>
+    </testcase>
+    <testcase classname="api.inventory" name="low_stock_alert" time="0.464">
+      <error message="connect ECONNREFUSED inventory-svc:8080" type="Error">Error: connect ECONNREFUSED inventory-svc:8080
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+    at ApiClient.request (tests/api/client.ts:48:11)</error>
+    </testcase>
+    <testcase classname="api.inventory" name="restock" time="0.331">
+      <error message="connect ECONNREFUSED inventory-svc:8080" type="Error">Error: connect ECONNREFUSED inventory-svc:8080
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+    at ApiClient.request (tests/api/client.ts:48:11)</error>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic data for the qa-metrics-mcp demo. Fictional app "ShopLite". -->
+<testsuites name="shoplite-nightly" tests="31" failures="3" errors="0" skipped="1" time="86.385" timestamp="2026-10-11T07:09:22.000Z">
+  <properties>
+    <property name="build" value="1211"/>
+    <property name="commit" value="294844a"/>
+    <property name="branch" value="main"/>
+    <property name="environment" value="staging"/>
+    <property name="pipeline" value="gitlab-ci/nightly-regression"/>
+  </properties>
+  <testsuite name="ui.auth" tests="6" failures="0" errors="0" skipped="1" time="13.951" timestamp="2026-10-11T07:09:22.000Z">
+    <testcase classname="ui.auth" name="login_valid" time="2.092"/>
+    <testcase classname="ui.auth" name="login_invalid_password" time="1.694"/>
+    <testcase classname="ui.auth" name="logout" time="1.203"/>
+    <testcase classname="ui.auth" name="password_reset_email" time="3.008"/>
+    <testcase classname="ui.auth" name="session_timeout" time="5.954"/>
+    <testcase classname="ui.auth" name="mfa_prompt" time="0.000">
+      <skipped message="Feature flag 'mfa_v2' disabled in staging"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ui.cart" tests="6" failures="1" errors="0" skipped="0" time="15.959" timestamp="2026-10-11T07:09:22.000Z">
+    <testcase classname="ui.cart" name="add_item" time="2.177"/>
+    <testcase classname="ui.cart" name="remove_item" time="2.471"/>
+    <testcase classname="ui.cart" name="update_quantity" time="3.327"/>
+    <testcase classname="ui.cart" name="apply_coupon" time="3.091">
+      <failure message="expected cart total 89.99 to equal 80.99 after coupon SAVE10" type="AssertionError">AssertionError: expected cart total 89.99 to equal 80.99 after coupon SAVE10
+    at CartPage.assertTotal (tests/ui/pages/cart.ts:72:7)
+    at tests/ui/cart.spec.ts:114:5</failure>
+    </testcase>
+    <testcase classname="ui.cart" name="cart_persists_after_login" time="3.801"/>
+    <testcase classname="ui.cart" name="empty_cart_message" time="1.092"/>
+  </testsuite>
+  <testsuite name="ui.checkout" tests="6" failures="2" errors="0" skipped="0" time="41.899" timestamp="2026-10-11T07:09:22.000Z">
+    <testcase classname="ui.checkout" name="guest_checkout" time="17.588"/>
+    <testcase classname="ui.checkout" name="saved_card_checkout" time="6.657"/>
+    <testcase classname="ui.checkout" name="tax_calculation" time="3.888">
+      <failure message="expected order total 107.39 to equal 97.67 for CO tax rate 8.81%" type="AssertionError">AssertionError: expected order total 107.39 to equal 97.67 for CO tax rate 8.81%
+    at CheckoutPage.assertOrderTotal (tests/ui/pages/checkout.ts:140:7)
+    at tests/ui/checkout.spec.ts:203:5</failure>
+    </testcase>
+    <testcase classname="ui.checkout" name="shipping_options" time="4.862">
+      <failure message="locator.click: Timeout 30000ms exceeded waiting for '[data-test=shipping-express]'" type="TimeoutError">TimeoutError: locator.click: Timeout exceeded waiting for '[data-test=shipping-express]'
+    at ShippingStep.selectExpress (tests/ui/pages/shipping.ts:22:18)
+    at tests/ui/checkout.spec.ts:156:5</failure>
+    </testcase>
+    <testcase classname="ui.checkout" name="order_confirmation_email" time="5.848"/>
+    <testcase classname="ui.checkout" name="address_validation" time="3.056"/>
+  </testsuite>
+  <testsuite name="ui.search" tests="5" failures="0" errors="0" skipped="0" time="10.745" timestamp="2026-10-11T07:09:22.000Z">
+    <testcase classname="ui.search" name="keyword_search" time="1.892"/>
+    <testcase classname="ui.search" name="filter_by_price" time="2.994"/>
+    <testcase classname="ui.search" name="sort_by_rating" time="2.573"/>
+    <testcase classname="ui.search" name="no_results_page" time="1.437"/>
+    <testcase classname="ui.search" name="autocomplete" time="1.849"/>
+  </testsuite>
+  <testsuite name="api.orders" tests="5" failures="0" errors="0" skipped="0" time="2.835" timestamp="2026-10-11T07:09:22.000Z">
+    <testcase classname="api.orders" name="create_order" time="0.436"/>
+    <testcase classname="api.orders" name="get_order" time="0.185"/>
+    <testcase classname="api.orders" name="cancel_order" time="0.339"/>
+    <testcase classname="api.orders" name="list_orders_pagination" time="0.657"/>
+    <testcase classname="api.orders" name="order_webhook" time="1.218"/>
+  </testsuite>
+  <testsuite name="api.inventory" tests="3" failures="0" errors="0" skipped="0" time="0.996" timestamp="2026-10-11T07:09:22.000Z">
+    <testcase classname="api.inventory" name="stock_decrement" time="0.257"/>
+    <testcase classname="api.inventory" name="low_stock_alert" time="0.406"/>
+    <testcase classname="api.inventory" name="restock" time="0.333"/>
+  </testsuite>
+</testsuites>

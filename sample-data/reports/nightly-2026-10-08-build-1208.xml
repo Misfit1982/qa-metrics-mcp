@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic data for the qa-metrics-mcp demo. Fictional app "ShopLite". -->
+<testsuites name="shoplite-nightly" tests="31" failures="0" errors="0" skipped="1" time="78.522" timestamp="2026-10-08T07:02:32.000Z">
+  <properties>
+    <property name="build" value="1208"/>
+    <property name="commit" value="2e717ea"/>
+    <property name="branch" value="main"/>
+    <property name="environment" value="staging"/>
+    <property name="pipeline" value="gitlab-ci/nightly-regression"/>
+  </properties>
+  <testsuite name="ui.auth" tests="6" failures="0" errors="0" skipped="1" time="13.332" timestamp="2026-10-08T07:02:32.000Z">
+    <testcase classname="ui.auth" name="login_valid" time="1.917"/>
+    <testcase classname="ui.auth" name="login_invalid_password" time="1.789"/>
+    <testcase classname="ui.auth" name="logout" time="1.246"/>
+    <testcase classname="ui.auth" name="password_reset_email" time="3.059"/>
+    <testcase classname="ui.auth" name="session_timeout" time="5.321"/>
+    <testcase classname="ui.auth" name="mfa_prompt" time="0.000">
+      <skipped message="Feature flag 'mfa_v2' disabled in staging"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="ui.cart" tests="6" failures="0" errors="0" skipped="0" time="15.205" timestamp="2026-10-08T07:02:32.000Z">
+    <testcase classname="ui.cart" name="add_item" time="2.347"/>
+    <testcase classname="ui.cart" name="remove_item" time="1.987"/>
+    <testcase classname="ui.cart" name="update_quantity" time="2.972"/>
+    <testcase classname="ui.cart" name="apply_coupon" time="2.655"/>
+    <testcase classname="ui.cart" name="cart_persists_after_login" time="4.066"/>
+    <testcase classname="ui.cart" name="empty_cart_message" time="1.178"/>
+  </testsuite>
+  <testsuite name="ui.checkout" tests="6" failures="0" errors="0" skipped="0" time="35.341" timestamp="2026-10-08T07:02:32.000Z">
+    <testcase classname="ui.checkout" name="guest_checkout" time="11.078"/>
+    <testcase classname="ui.checkout" name="saved_card_checkout" time="7.046"/>
+    <testcase classname="ui.checkout" name="tax_calculation" time="3.495"/>
+    <testcase classname="ui.checkout" name="shipping_options" time="3.794"/>
+    <testcase classname="ui.checkout" name="order_confirmation_email" time="6.623"/>
+    <testcase classname="ui.checkout" name="address_validation" time="3.305"/>
+  </testsuite>
+  <testsuite name="ui.search" tests="5" failures="0" errors="0" skipped="0" time="10.965" timestamp="2026-10-08T07:02:32.000Z">
+    <testcase classname="ui.search" name="keyword_search" time="1.913"/>
+    <testcase classname="ui.search" name="filter_by_price" time="2.855"/>
+    <testcase classname="ui.search" name="sort_by_rating" time="2.748"/>
+    <testcase classname="ui.search" name="no_results_page" time="1.307"/>
+    <testcase classname="ui.search" name="autocomplete" time="2.142"/>
+  </testsuite>
+  <testsuite name="api.orders" tests="5" failures="0" errors="0" skipped="0" time="2.651" timestamp="2026-10-08T07:02:32.000Z">
+    <testcase classname="api.orders" name="create_order" time="0.406"/>
+    <testcase classname="api.orders" name="get_order" time="0.166"/>
+    <testcase classname="api.orders" name="cancel_order" time="0.355"/>
+    <testcase classname="api.orders" name="list_orders_pagination" time="0.602"/>
+    <testcase classname="api.orders" name="order_webhook" time="1.122"/>
+  </testsuite>
+  <testsuite name="api.inventory" tests="3" failures="0" errors="0" skipped="0" time="1.028" timestamp="2026-10-08T07:02:32.000Z">
+    <testcase classname="api.inventory" name="stock_decrement" time="0.305"/>
+    <testcase classname="api.inventory" name="low_stock_alert" time="0.437"/>
+    <testcase classname="api.inventory" name="restock" time="0.286"/>
+  </testsuite>
+</testsuites>
