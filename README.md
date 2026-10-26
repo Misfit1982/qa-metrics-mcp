@@ -174,5 +174,5 @@ Built by **Jared Hood**, QA leader with 20 years in SaaS, fintech, and media QA 
 
 *All data in this repo is synthetic and describes a fictional application.*
 
-License: MIT
+[![M8ven Score](https://m8ven.ai/badge/mcp/misfit1982-qa-metrics-mcp-1xdpz2?v=246ca0a4031a47ca4a8b9273237d932b)](https://m8ven.ai/mcp/misfit1982-qa-metrics-mcp-1xdpz2?s=readme)
 
